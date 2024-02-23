@@ -1,15 +1,15 @@
 .popup-content {
   background-color: white;
   padding: 5px;
-  width: 500px;
-  height: 500px;
+  width: auto;
+  height: auto;
 }
 
 .popup-centent-container {
   width: 100%;
   height: 90%;
   margin-top: 10px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   padding: 5px;
 }
 
@@ -67,4 +67,39 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+.popup-item-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  height: 400px;
+  padding: 20px;
+}
+
+.item-consumed-container{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #555;
+  overflow-y: scroll;
+}
+
+.item-consumed-container h3{
+  padding: 0 10px;
+}
+
+.item-notConsumed-container{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #555;
+  overflow-y: scroll;
+}
+
+.item-notConsumed-container h3{
+  padding: 0 10px;
+}
+
+.popup-customer-name h3{
+  padding: 0 20px;
 }

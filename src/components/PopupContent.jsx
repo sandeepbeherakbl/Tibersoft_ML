@@ -21,20 +21,27 @@ const PopupContent = ({ description, onClose, data }) => {
       <div className="popup-centent-container">
         <div className="popup-description">
           <div>
-            <h3>Name: {data.cust_name}</h3>
+            <div className="popup-customer-name">
+              <h3>Name: {data.cust_name}</h3>
+            </div>
             {/* <p>
               Location: {data.latitude}, {data.longitude}
             </p> */}
-            <p>
-              <h3>Items Consumed:</h3>
+            <div className="popup-item-container">
+              <div className="item-consumed-container">
+                <p>
+                  <h3>Items Consumed:</h3>
+                  <ul> {renderBulletPoints(data.Items_Consumed)}</ul>
+                </p>
+              </div>
+              <div className="item-notConsumed-container">
+                <p>
+                  <h3>Items Not Consumed:</h3>
+                  <ul>{renderBulletPoints(data.Items_Not_Consumed)}</ul>
+                </p>
+              </div>
+            </div>
 
-              <ul> {renderBulletPoints(data.Items_Consumed)}</ul>
-            </p>
-            <p>
-              <h3>Items Not Consumed:</h3>
-
-              <ul>{renderBulletPoints(data.Items_Not_Consumed)}</ul>
-            </p>
             <p>
               <h3>Statistics:</h3>
 
