@@ -2,8 +2,9 @@ import React from "react";
 import "./main.css";
 import close from "../Assets/close.png";
 
-const PopupContent = ({ description, onClose, data }) => {
+const PopupContent = ({ data, onClose }) => {
   const renderBulletPoints = (list) => {
+    if (!list) return null;
     return (
       <ul>
         {list.split(",").map((item, index) => (
@@ -11,6 +12,20 @@ const PopupContent = ({ description, onClose, data }) => {
         ))}
       </ul>
     );
+  };
+
+  const renderPercentageSales = (salesData) => {
+    return salesData
+      .split("\n")
+      .slice(1, -1)
+      .map((line, index) => {
+        const [product, percentage] = line.split(/\s{2,}/);
+        return (
+          <li key={index}>
+            {product}: {percentage}%
+          </li>
+        );
+      });
   };
 
   return (
@@ -24,29 +39,16 @@ const PopupContent = ({ description, onClose, data }) => {
             <div className="popup-customer-name">
               <h3>Name: {data.cust_name}</h3>
             </div>
-            {/* <p>
-              Location: {data.latitude}, {data.longitude}
-            </p> */}
-            <div className="popup-item-container">
-              <div className="item-consumed-container">
+            <div className="item-consumed-container">
                 <p>
                   <h3>Items Consumed:</h3>
-                  <ul> {renderBulletPoints(data.Items_Consumed)}</ul>
+                  {renderBulletPoints(data.Items_Consumed)}
                 </p>
               </div>
-              <div className="item-notConsumed-container">
-                <p>
-                  <h3>Items Not Consumed:</h3>
-                  <ul>{renderBulletPoints(data.Items_Not_Consumed)}</ul>
-                </p>
-              </div>
+            <div className="precentage-sales-container">
+              <h3>Percentage Sales:</h3>
+              <ul>{renderPercentageSales(data["Percentage sales of probable products"])}</ul>
             </div>
-
-            <p>
-              <h3>Statistics:</h3>
-
-              <ul>{data.Statistics}</ul>
-            </p>
           </div>
         </div>
       </div>
