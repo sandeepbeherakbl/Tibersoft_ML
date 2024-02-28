@@ -72,18 +72,22 @@
 
 .item-consumed-container {
   width: 96%;
-  height: 250px;
-  border: 1px solid #555;
+  height: 200px;
+  /* border: 1px solid #555; */
   overflow-y: scroll;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  background-color: #ECEFF1;
   padding: 10px;
+  border-radius: 7px;
 }
 
 .precentage-sales-container{
   width: 96%;
   height: auto;
-  border: 1px solid #555;
+  /* border: 1px solid #555; */
   padding: 10px;
+  background-color: #ECEFF1;
+  border-radius: 7px;
 }
 
 .item-consumed-container h3 {

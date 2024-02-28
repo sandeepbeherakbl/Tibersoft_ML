@@ -61,7 +61,7 @@ const PopupContent = ({ data, onClose }) => {
         <div className="popup-description">
           <div>
             <div className="popup-customer-name">
-              <h3>Name: {data.cust_name}</h3>
+              <h2>{data.cust_name}</h2>
             </div>
             <div className="item-consumed-container">
               <p>
