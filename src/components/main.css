@@ -134,51 +134,37 @@
 }
 
 .sales-grid{
-  display: grid;
-    grid-template-columns: 20% 19% 20% 19% 20%;
-    gap: 5px;
+  height: auto;
 }
 
-.pagination{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+/* table */
+table{
+  width:100%;
+  table-layout: fixed;
 }
-
-.page-count{
-  background-color: blue;
-  padding: 5px 10px;
-  border-radius: 50%;
-  color: white;
+.tbl-header{
+  background-color: rgba(0, 0, 0, 0.43);
+ }
+.tbl-content{
+  height:200px;
+  overflow-x:auto;
+  margin-top: 0px;
+  /* border: 1px solid rgba(255,255,255,0.3); */
 }
-
-.pagination button:active{
-  color: blue;
+th{
+  padding: 10px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+  text-transform: uppercase;
 }
-
-.pagination button{
-  color: #555;
-  background-color: transparent;
-  outline: none;
-  border: none;
-}
-
-.sales-item{
-  border: 1px solid rgb(0, 127, 34);
-  background-color: rgba(141, 255, 171, 0.426);
-  color: green;
-  padding: 5px;
-  height: 100px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sales-item p{
-  margin: 0;
-}
-
-.sales-item h3{
-  margin: 0 ;
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 16px;
+  color: black;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }

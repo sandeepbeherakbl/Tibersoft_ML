@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./main.css";
 import close from "../Assets/close.png";
 
 const PopupContent = ({ data, onClose }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-
   const renderBulletPoints = (list) => {
     if (!list) return null;
     return (
@@ -21,37 +18,44 @@ const PopupContent = ({ data, onClose }) => {
     const salesData = data["Percentage sales of probable products"];
     if (!salesData) return null; // Handle case where salesData is undefined or null
     const salesArray = salesData.split("\n").slice(1, -1);
-    const totalPages = Math.ceil(salesArray.length / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, salesArray.length);
 
-    return salesArray
-      .slice(startIndex, endIndex)
-      .map((line, index) => {
-        const [product, percentage] = line.split(/\s{2,}/);
-        return (
-          <div className="sales-item" key={index}>
-            <p>
-              {product}: 
-            </p>
-            <h3>{percentage}%</h3>
-          </div>
-        );
-      });
+    return (
+      <div >
+        <div class="tbl-header">
+          <table
+            className="sales-table"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+          >
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Percentage Sales</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              {salesArray.map((line, index) => {
+                const [product, percentage] = line.split(/\s{2,}/);
+                return (
+                  <tr key={index}>
+                    <td>{product}</td>
+                    <td>{percentage}%</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
   };
 
-  const handleNextPage = () => {
-    const totalPages = Math.ceil(data["Percentage sales of probable products"].split("\n").slice(1, -1).length / itemsPerPage);
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
   return (
     <div className="popup-content">
       <div className="popup-close" onClick={onClose}>
@@ -70,19 +74,8 @@ const PopupContent = ({ data, onClose }) => {
               </p>
             </div>
             <div className="precentage-sales-container">
-              <h3>Sales Probability:</h3>
-              <div className="sales-grid">
-                {renderPercentageSales()}
-              </div>
-              <div className="pagination">
-                <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                  Prev
-                </button>
-                <span className="page-count">{currentPage}</span>
-                <button onClick={handleNextPage} disabled={currentPage >= Math.ceil(data["Percentage sales of probable products"].split("\n").slice(1, -1).length / itemsPerPage)}>
-                  Next
-                </button>
-              </div>
+              {/* <h3>Sales Probability:</h3> */}
+              <div className="sales-grid">{renderPercentageSales()}</div>
             </div>
           </div>
         </div>
