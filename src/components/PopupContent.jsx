@@ -25,9 +25,14 @@ const PopupContent = ({ data, onClose }) => {
     if (!salesData) return null;
     const salesArray = salesData.split("\n").slice(1, -1);
 
+    const totalPages = Math.ceil(salesArray.length / 5);
+    const startIndex = (currentPage - 1) * 5;
+    const endIndex = Math.min(startIndex + 5, salesArray.length);
+    const currentData = salesArray.slice(startIndex, endIndex);
+
     return (
       <div>
-        <div class="tbl-header">
+        <div className="tbl-header">
           <table
             className="sales-table"
             cellpadding="0"
@@ -43,10 +48,10 @@ const PopupContent = ({ data, onClose }) => {
           </table>
         </div>
 
-        <div class="tbl-content">
+        <div className="tbl-content">
           <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-              {salesArray.map((line, index) => {
+              {currentData.map((line, index) => {
                 const [product, percentage] = line.split(/\s{2,}/);
                 return (
                   <tr key={index}>
@@ -58,6 +63,28 @@ const PopupContent = ({ data, onClose }) => {
             </tbody>
           </table>
         </div>
+
+        {totalPages > 1 && (
+          <div className="table-view-pagination">
+            <button
+              onClick={() =>
+                setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
+              }
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+            <span className="page-count">{currentPage} / {totalPages}</span>
+            <button
+              onClick={() =>
+                setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     );
   };
@@ -96,7 +123,7 @@ const PopupContent = ({ data, onClose }) => {
             >
               Prev
             </button>
-            <span className="page-count">{currentPage}</span>
+            <span className="page-count">{currentPage} / {totalPages}</span>
             <button
               onClick={() =>
                 setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))

@@ -37,7 +37,7 @@ const MapComponent = () => {
       }),
     });
 
-    const popupElement = document.createElement("div"); 
+    const popupElement = document.createElement("div");
     popupRef.current = new Overlay({
       element: popupElement,
       autoPan: true,
@@ -51,15 +51,17 @@ const MapComponent = () => {
 
     const markers = new VectorLayer({
       source: new VectorSource({
-        features: data.map(({ _id, latitude, longitude, cust_name, total, Items_Consumed }) => {
-          return new Feature({
-            geometry: new Point(
-              fromLonLat([parseFloat(longitude), parseFloat(latitude)])
-            ),
-            id: _id,
-            description: `Customer Name: ${cust_name}<br>Total: ${total}<br>Items Consumed: ${Items_Consumed}`,
-          });
-        }),
+        features: data.map(
+          ({ _id, latitude, longitude, cust_name, total, Items_Consumed }) => {
+            return new Feature({
+              geometry: new Point(
+                fromLonLat([parseFloat(longitude), parseFloat(latitude)])
+              ),
+              id: _id,
+              description: `Customer Name: ${cust_name}<br>Total: ${total}<br>Items Consumed: ${Items_Consumed}`,
+            });
+          }
+        ),
       }),
       style: new Style({
         image: new Icon({
@@ -95,23 +97,28 @@ const MapComponent = () => {
 
   return (
     <>
-      <HeaderComponent />
-      <div>
-        <div ref={mapRef} style={{ width: "100%", height: "93vh" }}></div>
-        {popupData && (
-          <div
-            className="popup"
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 1000,
-            }}
-          >
-            <PopupContent data={popupData} onClose={() => setPopupData(null)} />
-          </div>
-        )}
+      <div className="landing-page-maincontainer">
+        <HeaderComponent />
+        <div>
+          <div ref={mapRef} style={{ width: "100%", height: "100vh" }}></div>
+          {popupData && (
+            <div
+              className="popup"
+              style={{
+                position: "absolute",
+                left: "60%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 1000,
+              }}
+            >
+              <PopupContent
+                data={popupData}
+                onClose={() => setPopupData(null)}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
