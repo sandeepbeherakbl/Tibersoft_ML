@@ -22,7 +22,7 @@ const PopupContent = ({ data, onClose }) => {
 
   const renderPercentageSalesTable = () => {
     const salesData = data["Percentage sales of probable products"];
-    if (!salesData) return null; // Handle case where salesData is undefined or null
+    if (!salesData) return null;
     const salesArray = salesData.split("\n").slice(1, -1);
 
     return (
@@ -113,18 +113,20 @@ const PopupContent = ({ data, onClose }) => {
 
   return (
     <div className="popup-content">
-      <div className="popup-close" onClick={onClose}>
-        <img src={close} alt="" />
-      </div>
       <div className="popup-centent-container">
         <div className="popup-description">
           <div>
-            <div className="popup-customer-name">
-              <h2>{data.cust_name}</h2>
+            <div className="popup-header-container">
+              <div className="popup-customer-name">
+                <h2>{data.cust_name}</h2>
+              </div>
+              <div className="popup-close" onClick={onClose}>
+                <img src={close} alt="" />
+              </div>
             </div>
             <div className="item-consumed-container">
               <p>
-                <h3>Items Consumed:</h3>
+                <h3>Items Consumed</h3>
                 <div className="items-consumed-container-data">
                   {renderBulletPoints(data.Items_Consumed)}
                 </div>
