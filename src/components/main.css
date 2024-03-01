@@ -17,11 +17,11 @@
 .logo-container{
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .logo-container .tibersoft-logo {
-  width: 200px;
+  width: 150px;
   padding: 10px 20px;
 }
 
@@ -31,8 +31,8 @@
 }
 
 .logo-container .menubar-icon{
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
 }
 
 .header-tools{
@@ -67,8 +67,8 @@
 }
 
 .nav-title img{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 
 .nav-title p {
@@ -76,8 +76,8 @@
 }
 
 .nav-dropdown-btn img{
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 .popup-content {

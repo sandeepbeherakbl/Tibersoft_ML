@@ -20,8 +20,8 @@ export const HeaderComponent = () => {
           <img className="tibersoft-logo" src={Tibersoft} alt="" />
         </div>
         <div className="header-tools">
-          <img src={ToolsLogo} className="your-tools-icon" alt="" />
-          <h1>YOUR TOOLS</h1>
+          {/* <img src={ToolsLogo} className="your-tools-icon" alt="" />
+          <h1>YOUR TOOLS</h1> */}
         </div>
 
         <div className="nvaigation-items-container">
